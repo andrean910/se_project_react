@@ -15,24 +15,58 @@ export function getWeatherData() {
     .then((data) => {
       return parseWeatherData(data);
     });
-  // .then((data) => {
-  //   return getWeatherCondition(data.temp);
-  // })
 }
 
 function parseWeatherData(data) {
-  const parsedData = {};
+  const parsedData = { temp: {} };
+  const fahrenheit = data.main.temp;
+  const celsius = ((fahrenheit - 32) * 5) / 9;
+
   parsedData.city = data.name;
-  parsedData.temp = Math.round(data.main.temp);
+  parsedData.temp.F = Math.round(fahrenheit);
+  parsedData.temp.C = Math.round(celsius);
+  parsedData.tempCondition = getWeatherTempCondition(parsedData.temp.F);
+  parsedData.skyCondition = getWeatherSkyCondition(data.weather[0].id);
+  parsedData.period = isDayOrNight(data);
   return parsedData;
 }
 
-function getWeatherCondition(temp) {
+function getWeatherTempCondition(temp) {
   if (temp >= 86) {
     return "hot";
   } else if (temp >= 66) {
     return "warm";
   } else {
     return "cold";
+  }
+}
+
+function getWeatherSkyCondition(id) {
+  if (id >= 200 && id < 300) {
+    return "storm";
+  } else if (id >= 300 && id < 600) {
+    return "rain";
+  } else if (id >= 600 && id < 700) {
+    return "snow";
+  } else if (id == 741) {
+    return "fog";
+  } else if (id == 800) {
+    return "clear";
+  } else if (id > 800 && id < 900) {
+    return "cloudy";
+  } else {
+    return "default";
+  }
+}
+
+function isDayOrNight(data) {
+  const sunrise = data.sys.sunrise;
+  const sunset = data.sys.sunset;
+  const now = Math.floor(Date.now() / 1000);
+  const isDaytime = now >= sunrise && now < sunset;
+  if (isDaytime) {
+    return "day";
+  } else {
+    return "night";
   }
 }
