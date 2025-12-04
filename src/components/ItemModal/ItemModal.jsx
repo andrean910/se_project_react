@@ -1,6 +1,6 @@
 import "./Modal.css";
 
-function ItemCardModal({ isOpen, card, onClose }) {
+function ItemModal({ isOpen, card, onClose }) {
   if (!card) return null;
 
   return (
@@ -21,4 +21,4 @@ function ItemCardModal({ isOpen, card, onClose }) {
   );
 }
 
-export default ItemCardModal;
+export default ItemModal;

@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentTempUnitContext from "../../contexts/CurrentTempUnitContext.js";
 
-function Main({ clothingItems, handleOpenItemCardModal, weatherData }) {
+function Main({ clothingItems, handleOpenItemModal, weatherData }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
 
   const filteredItems = clothingItems.filter(
@@ -24,7 +24,7 @@ function Main({ clothingItems, handleOpenItemCardModal, weatherData }) {
             <ItemCard
               key={item._id}
               data={item}
-              onCardClick={handleOpenItemCardModal}
+              onCardClick={handleOpenItemModal}
             />
           );
         })}

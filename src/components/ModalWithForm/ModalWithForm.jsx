@@ -1,4 +1,4 @@
-import "../ItemCardModal/Modal.css";
+import "../ItemModal/Modal.css";
 
 function ModalWithForm({ isOpen, onClose, children, title, buttonText, name }) {
   return (

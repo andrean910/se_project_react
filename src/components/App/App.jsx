@@ -5,7 +5,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { defaultClothingItems } from "../../utils/defaultClothing";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import ItemCardModal from "../ItemCardModal/ItemCardModal";
+import ItemModal from "../ItemModal/ItemModal";
 import { getWeatherData } from "../../utils/weatherAPI";
 import CurrentTempUnitContext from "../../contexts/CurrentTempUnitContext.js";
 
@@ -25,7 +25,7 @@ function App() {
   function handleOpenAddClothingModal() {
     setActiveModal("add-clothing-modal");
   }
-  function handleOpenItemCardModal(card) {
+  function handleOpenItemModal(card) {
     setActiveModal("itemCard-modal");
     setSelectedCard(card);
   }
@@ -63,12 +63,12 @@ function App() {
         />
         <Main
           clothingItems={clothingItems}
-          handleOpenItemCardModal={handleOpenItemCardModal}
+          handleOpenItemModal={handleOpenItemModal}
           weatherData={weatherData}
         />
         <Footer />
 
-        <ItemCardModal
+        <ItemModal
           isOpen={activeModal === "itemCard-modal"}
           onClose={handleCloseModal}
           card={selectedCard}

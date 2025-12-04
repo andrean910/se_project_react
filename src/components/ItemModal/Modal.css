@@ -71,6 +71,7 @@
   background-image: url(../../assets/close-btn-light.svg);
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .modal__fieldset {
