@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./ToggleSwitch.css";
 import { useContext } from "react";
 import CurrentTempUnitContext from "../../contexts/CurrentTempUnitContext.js";

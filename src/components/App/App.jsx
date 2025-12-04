@@ -103,7 +103,7 @@ function App() {
           </fieldset>
           <fieldset className="modal__fieldset">
             <legend>Select the weather type:</legend>
-            <div>
+            <div className="modal__radio-option">
               <input
                 className="modal__radio-input"
                 type="radio"
@@ -112,11 +112,11 @@ function App() {
                 value="Hot"
                 defaultChecked
               />
-              <label className="modal__label" htmlFor="Hot">
+              <label className="modal__radio-label" htmlFor="Hot">
                 Hot
               </label>
             </div>
-            <div>
+            <div className="modal__radio-option">
               <input
                 className="modal__radio-input"
                 type="radio"
@@ -124,11 +124,11 @@ function App() {
                 name="temp"
                 value="Warm"
               />
-              <label className="modal__label" htmlFor="Warm">
+              <label className="modal__radio-label" htmlFor="Warm">
                 Warm
               </label>
             </div>
-            <div>
+            <div className="modal__radio-option">
               <input
                 className="modal__radio-input"
                 type="radio"
@@ -136,7 +136,7 @@ function App() {
                 name="temp"
                 value="Cold"
               />
-              <label className="modal__label" htmlFor="Cold">
+              <label className="modal__radio-label" htmlFor="Cold">
                 Cold
               </label>
             </div>
