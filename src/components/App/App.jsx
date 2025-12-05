@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
@@ -8,6 +9,8 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeatherData } from "../../utils/weatherAPI";
 import CurrentTempUnitContext from "../../contexts/CurrentTempUnitContext.js";
+import Profile from "../Profile/Profile.jsx";
+// import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 
 function App() {
   const [clothingItems, setClothingItems] = useState([]);
@@ -61,11 +64,23 @@ function App() {
           handleOpenAddClothingModal={handleOpenAddClothingModal}
           weatherData={weatherData}
         />
-        <Main
-          clothingItems={clothingItems}
-          handleOpenItemModal={handleOpenItemModal}
-          weatherData={weatherData}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                clothingItems={clothingItems}
+                handleOpenItemModal={handleOpenItemModal}
+                weatherData={weatherData}
+              />
+            }
+          ></Route>
+          <Route
+            path="/profile"
+            element={<Profile clothingItems={clothingItems} />}
+          ></Route>
+        </Routes>
+
         <Footer />
 
         <ItemModal
@@ -142,6 +157,7 @@ function App() {
             </div>
           </fieldset>
         </ModalWithForm>
+        {/* <AddItemModal /> */}
       </div>
     </CurrentTempUnitContext.Provider>
   );

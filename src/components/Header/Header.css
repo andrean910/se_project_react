@@ -53,5 +53,12 @@
 }
 
 .header__avatar {
-  margin-left: 88px;
+  margin-left: 12px;
+}
+
+.header__link {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  align-items: center;
 }
