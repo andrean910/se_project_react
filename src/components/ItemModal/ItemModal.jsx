@@ -1,19 +1,29 @@
 import "./Modal.css";
 
-function ItemModal({ isOpen, card, onClose }) {
+function ItemModal({ isOpen, card, onClose, handleOpenDeleteModal }) {
   if (!card) return null;
 
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="modal__container">
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <button
           type="button"
           className="modal__close-btn"
           onClick={onClose}
         ></button>
         <div>
-          <h2 className="modal__text">{card.name}</h2>
+          <div className="modal__description">
+            <h2 className="modal__text">{card.name}</h2>
+            <button
+              type="button"
+              className="modal__delete-btn"
+              onClick={handleOpenDeleteModal}
+            >
+              Delete Item
+            </button>
+          </div>
+
           <p className="modal__text">Weather: {card.weather}</p>
         </div>
       </div>

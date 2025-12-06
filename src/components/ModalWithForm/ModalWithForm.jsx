@@ -1,6 +1,14 @@
 import "../ItemModal/Modal.css";
 
-function ModalWithForm({ isOpen, onClose, children, title, buttonText, name }) {
+function ModalWithForm({
+  isOpen,
+  onClose,
+  children,
+  title,
+  buttonText,
+  name,
+  handleSubmit,
+}) {
   return (
     <div
       className={`modal ${isOpen ? "modal_is-opened" : ""}`}
@@ -15,13 +23,12 @@ function ModalWithForm({ isOpen, onClose, children, title, buttonText, name }) {
           className="modal__close-btn modal__close-btn_type_form"
           onClick={onClose}
         ></button>
-        <form className="modal__form" name={name}>
-          {/* addabove into form onSubmit={handleSubmit} */}
+        <form className="modal__form" name={name} onSubmit={handleSubmit}>
           {children}
+          <button className="modal__submit-btn" type="submit">
+            {buttonText}
+          </button>
         </form>
-        <button className="modal__submit-btn" type="submit">
-          {buttonText}
-        </button>
       </div>
     </div>
   );
