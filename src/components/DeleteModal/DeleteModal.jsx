@@ -1,4 +1,5 @@
 import "../ItemModal/Modal.css";
+import "./DeleteModal.css";
 
 function DeleteModal({ onClose, handleDeleteItem, isOpen, card }) {
   return (
