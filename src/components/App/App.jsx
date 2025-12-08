@@ -60,14 +60,18 @@ function App() {
       .catch(console.error);
   }
 
-  function handleOpenDeleteModal() {
+  function handleOpenDeleteModal(card) {
     setActiveModal("delete-modal");
     setSelectedCard(card);
   }
 
-  function handleDeleteItem() {
-    const card = { selectedCard };
-    deleteItem(card._id);
+  function handleDeleteItem(id) {
+    deleteItem(id)
+      .then(() => {
+        setClothingItems((prev) => prev.filter((item) => item._id !== id));
+        handleCloseModal();
+      })
+      .catch(console.error);
   }
 
   useEffect(() => {
